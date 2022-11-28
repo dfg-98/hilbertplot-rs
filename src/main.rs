@@ -1,3 +1,4 @@
+mod hilbertcurve;
 mod point;
 use point::HPoint;
 
