@@ -3,17 +3,20 @@ use std::ops;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct HPoint {
-    x: u32,
-    y: u32,
-    i: u64,
+    pub x: usize,
+    pub y: usize,
+    pub i: usize,
 }
 
 impl HPoint {
-    pub fn new(x: u32, y: u32) -> HPoint {
-        HPoint { x: x, y: y, i: 0 }
+    pub fn new(x: usize, y: usize) -> HPoint {
+        HPoint { x, y, i: 0 }
+    }
+    pub fn new_with_index(x: usize, y: usize, i: usize) -> HPoint {
+        HPoint { x, y, i }
     }
 
-    pub fn set_index(&mut self, i: u64) {
+    pub fn set_index(&mut self, i: usize) {
         self.i = i;
     }
 }
@@ -42,10 +45,10 @@ impl ops::Add<HPoint> for HPoint {
     }
 }
 
-impl ops::Add<u32> for HPoint {
+impl ops::Add<usize> for HPoint {
     type Output = HPoint;
 
-    fn add(self, other: u32) -> HPoint {
+    fn add(self, other: usize) -> HPoint {
         HPoint {
             x: self.x + other,
             y: self.y + other,
@@ -66,10 +69,10 @@ impl ops::Sub<HPoint> for HPoint {
     }
 }
 
-impl ops::Sub<u32> for HPoint {
+impl ops::Sub<usize> for HPoint {
     type Output = HPoint;
 
-    fn sub(self, other: u32) -> HPoint {
+    fn sub(self, other: usize) -> HPoint {
         HPoint {
             x: self.x - other,
             y: self.y - other,
